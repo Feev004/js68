@@ -17,12 +17,12 @@ let b22 = 8
 b22 /= 4
 console.log(`num 2.2 : ${b22}`);
 let count = 5
-// let a = count++
-// let b = count
-// console.log(`num 2.3 : ${a}, ${b}`);
-// let a = ++count
-// let b = count
-// console.log(`num 2.3 : ${a}, ${b}`);
+let a23 = count++
+let b23 = count
+console.log(`num 2.3 : ${a23}, ${b23}`);
+let a24 = ++count
+let b24 = count
+console.log(`num 2.4 : ${a24}, ${b24}`);
 console.log(`\n`);
 
 console.log("num 3.1 : ", 10 === "10");
