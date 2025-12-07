@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <script>
+    // รับค่าจากผู้ใช้
+      let charInput = prompt("กรุณาป้อนตัวอักษรภาษาอังกฤษหนึ่งตัว:");
+    //   charInput = charInput.toUpperCase();
+      let resultMessage;
+      
+
+      // 1. ตรวจสอบความถูกต้องของข้อมูล (ต้องมี 1 ตัวอักษรเท่านั้น และไม่เป็น String ว่าง)
+      if ( charInput.length !== 1) {  //q1
+      resultMessage = "ข้อมูลไม่ถูกต้อง: กรุณาป้อนเพียงหนึ่งตัวอักษรเท่านั้น";
+    //   console.log(charInput);
+    //   console.log(charInput.length);
+      
+      
+      } else {
+      // 2. แปลงเป็นตัวพิมพ์ใหญ่เพื่อเปรียบเทียบค่า
+      let char = charInput.toUpperCase();
+
+      // 3. ตรวจสอบเงื่อนไขหลายทาง
+      if (char === 'A' || char === 'E' || char === 'I' || char === 'O' || char === 'U') {       //q2
+      // เงื่อนไขที่ 1: เป็นสระ
+      resultMessage = `ตัวอักษร '${charInput}' เป็น **สระ** (Vowel)`;
+      } else if (char >= 'A' && char <= 'Z') {                                                  //q3
+      // เงื่อนไขที่ 2: อยู่ในช่วง A-Z แต่ตรวจเงื่อนไขแรกมาแล้ว เป็นเท็จ (จึงเป็นพยัญชนะ)
+      resultMessage = `ตัวอักษร '${charInput}' เป็น **พยัญชนะ** (Consonant)`;
+      } else {
+      // เงื่อนไขสุดทาย: ไม่ใช่ตัวอักษรภาษาอังกฤษ คือ ไม่ใช่ ตัวอักษร A-Z
+      resultMessage = `ตัวอักษร '${charInput}' **ไม่ใช่อักขระภาษาอังกฤษ**`;
+      }
+      }
+      console.log(resultMessage);
+    </script>
+  </body>
+</html>

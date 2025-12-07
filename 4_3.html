@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <script>
+        // 1. รับค่าตัวเลขสองตัว
+      let num1Input = prompt("กรุณาป้อนตัวเลขแรก (Number 1):");
+      let num2Input = prompt("กรุณาป้อนตัวเลขที่สอง (Number 2):");
+
+      let num1 = parseInt(num1Input);
+      let num2 = parseInt(num2Input);
+    //   let checknum = isNaN(num1) || isNaN(num2);
+
+      let result;
+
+      // 2. ตรวจสอบความถูกต้องของข้อมูล
+      if ( isNaN(num1Input) || isNaN(num2Input)) { // q1
+      result = "ข้อมูลไม่ถูกต้อง: กรุณาป้อนเป็นตัวเลขเท่านั้น";
+      } else {
+      // 3. ใช้ Ternary Operator ในการกําหนดค่าตัวแปร result
+      result = num1 > num2 ? `${num1} **มากกว่า** ${num2}` // q2 ถ้า num1 > num2
+      : num1 < num2// q3 แทนที่จะเป็น String กลับเป็นเงื่อนไขเปรียบเทียบต่อ
+      ? `${num1} **น้อยกว่า** ${num2}` // ถ้า num1 < num2
+      : num1 == num2 ? `${num1} **เท่ากับ** ${num2}` : result = `ค่าไม่ถูกต้อง`// q4 ถ้า num1 == num2
+      }
+
+      console.log(`ผลการเปรียบเทียบ: ${result}`);
+    </script>
+  </body>
+</html>
