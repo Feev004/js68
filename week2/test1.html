@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <!-- <input type="text" id="w1">
+    <input type="text" id="h1"> -->
+    <!-- <div id="bmi_html"></div> -->
+    <script>
+      // test1
+      // function sayHello(){
+      //     console.log("สวัสดี");
+      // }
+      // sayHello();
+
+      // test2
+      // function calculateArea(w, h){
+      //     return w * h;
+      // }
+      // let area = calculateArea(5,10);
+      // console.log(`พื้นที่คือ ${area}`);
+
+      // function calculateSum(num1, num2){
+      //     let sum = num1 + num2;
+      //     return sum;
+      // }
+      // let input1=  parseInt(prompt("ป้อนตัวเลขตัวที่ 1:"));
+      // let input2=  parseInt(prompt("ป้อนตัวเลขตัวที่ 2:"));
+      // let result = calculateSum(input1, input2);
+      // console.log(`sum : ${input1} + ${input2} = ${result}`);
+
+      // test3
+      // function walcome(name = "user", getting = "hello"){
+      //     console.log(`${getting}, ${name}`);
+
+      // }
+      // walcome("snail");
+      // walcome("snail", "hi");
+
+      // test4
+      // let checkpass = score => score >= 50 ? "pass" : "fail";
+      // let studentScore = parseInt(prompt("pls input your score : "));
+      // let passStatus = checkpass(studentScore);
+      // console.log(`your score is ${studentScore}, status: ${passStatus}`);
+
+      // test5
+    //   function calBMI(w, h) {
+    //     let b = w / (h * h);
+    //     return b;
+    //   }
+    //   function checkBMI(bmi) {
+    //     if (bmi < 18.5) return "ผอมเกินไป";
+    //     else if (bmi >= 18.5 && bmi < 24.9) return "ปกติ";
+    //     else return "อ้วน";
+    //   }
+    //     // let weight = parseFloat(document.getElementById("w1").value);
+    //     // let height = parseFloat(document.getElementById("h1").value);
+    //   let weight = parseFloat(prompt("ป้อนน้ำหนัก(กก.) : "));
+    //   let height = parseFloat(prompt("ป้อนส่วนสูง(เมตร) : "));
+    //   if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+    //     console.log("ข้อมูลไม่ถูกต้อง");
+    //   } else {
+    //     let bmi = calBMI(weight, height);
+    //     let status = checkBMI(bmi);
+    //     console.log(`น้ำหนัก: ${weight} kg, ส่วนสูง: ${height} m`);
+    //     console.log(`ค่าดัชนีมวลกาย (BMI) ของคุณคือ ${bmi.toFixed(2)} ซึ่งจัดอยู่ในเกณฑ์: ${status}`);
+    //     let bmi_html = document.getElementById("bmi_html");
+    //     bmi_html.innerHTML = `น้ำหนัก: ${weight} kg, ส่วนสูง: ${height} m<br> ค่าดัชนีมวลกาย (BMI) ของคุณคือ ${bmi.toFixed(2)} ซึ่งจัดอยู่ในเกณฑ์: ${status}`;
+    //   }
+
+    // test6
+    const calNetprice = (price, discountRat = 0) => {
+        if(price <= 0 || discountRat < 0 || discountRat > 1){
+            return NaN;
+        }
+        let discountAmount = price * discountRat;
+        let netPrice = price - discountAmount;
+        return netPrice;
+    }
+    let ProductPrice = parseInt(prompt("ป้อนราคาสินค้า : "));
+    let discountPercentage = parseFloat(prompt("ป้อนส่วนลด (เป็นเปอร์เซ็นต์ เช่น 10, 20 หรือเว้นว่าง): "));
+    let rate = isNaN(discountPercentage) ? 0 : discountPercentage / 100;
+    let finalPrice = calNetprice(ProductPrice, rate);
+    if(isNaN(finalPrice)){
+        console.log("ข้อมูลไม่ถูกต้อง");
+    } else {
+        console.log(`ราคาเต็ม: ${ProductPrice.toFixed(2)} บาท`);
+        console.log(`อัตราส่วนลด: ${rate * 100}%`);
+        console.log(`ราคาสุทธิที่ต้องจ่าย: ${finalPrice.toFixed(2)} บาท`);
+    }
+    </script>
+  </body>
+</html>
