@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1></h1>
+    <div id="result">err</div>
+    <script>
+      const convertTemp = (value, unit) => {
+        if (unit === "C") {
+          return (value * 9) / 5 + 32;
+        } else if (unit === "F") {
+          return ((value - 32) * 5) / 9;
+        } else {
+          return "ค่าไม่ถูกต้อง";
+        }
+      };
+      let tempValue = parseFloat(prompt("ป้อนค่าอุณหภูมิ:"));
+      let tempUnit = prompt("ป้อนหน่วยอุณหภูมิ (C/F):").toUpperCase();
+      if (tempUnit !== "C" && tempUnit !== "F") {
+        console.log("หน่วยอุณหภูมิไม่ถูกต้อง กรุณาป้อน C หรือ F");
+        let _htmlerr = document.getElementById("result");
+            _htmlerr.innerHTML = `<p>หน่วยอุณหภูมิไม่ถูกต้อง กรุณาป้อน C หรือ F</p>`;
+      } else {
+        switch (tempUnit) {
+          case "C":
+            let convert = convertTemp(tempValue, tempUnit);
+            console.log(`${tempValue} ˚C = ${convert.toFixed(2)} ˚F`);
+            _html = document.getElementById("result");
+            _html.innerHTML = `<p>${tempValue} ˚C = ${convert.toFixed(2)} ˚F</p>`;
+            break;
+          case "F":
+            let convertF = convertTemp(tempValue, tempUnit);
+            console.log(`${tempValue} ˚F = ${convertF.toFixed(2)} ˚C`);
+            _html = document.getElementById("result");
+            _html.innerHTML = `<p>${tempValue} ˚C = ${convertF.toFixed(2)} ˚F</p>`;
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
