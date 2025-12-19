@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculate Price</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+    }
+  </style>
+  <body>
+    <h1>ระบบคำนวนการจัดธนบัตรและเหรียญ</h1>
+    <h2 id="h2"></h2>
+    <h3 id="h3"></h3>
+    <div id="cal"></div>
+
+    <script>
+      function bankCoin(totalAmount) {
+        let h2 = document.getElementById("h2");
+        h2.innerText = `จำนวนเงินที่ต้องจัด : ${totalAmount} บาท`;
+
+        const denominations = [1000, 100, 50, 20, 10, 5, 1];
+        const coins = {};
+        let remaining = totalAmount;
+
+        let coin_1000 = 0;
+        let sum1coin_1000 = 0;
+        let coin_100 = 0;
+        let sum1coin_100 = 0;
+        let coin_50 = 0;
+        let sum1coin_50 = 0;
+        let coin_20 = 0;
+        let sum1coin_20 = 0;
+        let coin_10 = 0;
+        let sum1coin_10 = 0;
+        let coin_5 = 0;
+        let sum1coin_5 = 0;
+        let coin_1 = 0;
+        let sum1coin_1 = 0;
+        coin_1000 = Math.floor(totalAmount / 1000);
+        sum1coin_1000 = totalAmount % 1000;
+        coin_100 = Math.floor(sum1coin_1000 / 100);
+        sum1coin_100 = sum1coin_1000 % 100;
+        coin_50 = Math.floor(sum1coin_100 / 50);
+        sum1coin_50 = sum1coin_100 % 50;
+        coin_20 = Math.floor(sum1coin_50 / 20);
+        sum1coin_20 = sum1coin_50 % 20;
+        coin_10 = Math.floor(sum1coin_20 / 10);
+        sum1coin_10 = sum1coin_20 % 10;
+        coin_5 = Math.floor(sum1coin_10 / 5);
+        sum1coin_5 = sum1coin_10 % 5;
+        coin_1 = Math.floor(sum1coin_5 / 1);
+        sum1coin_1 = sum1coin_5 % 1;
+
+        let h3 = document.getElementById("h3");
+        h3.innerText = `การจัดเหรียญและธนบัตร :`;
+        let cal = document.getElementById("cal");
+
+        for (let i = 0; i < denominations.length; i++) {
+          let denom = denominations[i];
+          let count = 0;
+          console.log("0", denom);
+          if (denom === 1000) {
+            console.log("+", coin_1000);
+            count = coin_1000;
+          } else if (denom === 100) {
+            console.log("+", coin_100);
+            count = coin_100;
+          } else if (denom === 50) {
+            console.log("+", coin_50);
+            count = coin_50;
+          } else if (denom === 20) {
+            console.log("+", coin_20);
+            count = coin_20;
+          } else if (denom === 10) {
+            console.log("+", coin_10);
+            count = coin_10;
+          } else if (denom === 5) {
+            console.log("+", coin_5);
+            count = coin_5;
+          } else if (denom === 1) {
+            console.log("+", coin_1);
+            count = coin_1;
+          }
+
+          if (count != 0) {
+            const label = denom >= 10 ? "ธนบัตรชนิด" : "เหรียญ";
+            const unit = denom >= 10 ? "ใบ" : "เหรียญ";
+            const text = `${label} ${denom} บาท: จำนวน ${count} ${unit}<br>`;
+
+            if (cal.innerHTML === "") {
+              cal.innerHTML = text;
+            } else {
+              cal.innerHTML += text;
+            }
+          }
+        }
+
+        // for (let denom of denominations) {
+        //   coins[denom] = Math.floor(remaining / denom);
+        //   remaining = remaining % denom;
+
+        //   if (coins[denom] != 0) {
+        //     const label = denom >= 10 ? 'ธนบัตรชนิด' : 'เหรียญ';
+        //     const unit = denom >= 10 ? 'ใบ' : 'เหรียญ';
+        //     const text = `${label} ${denom} บาท: จำนวน ${coins[denom]} ${unit}<br>`;
+
+        //     if (cal.innerHTML === '') {
+        //       cal.innerHTML = text;
+        //     } else {
+        //       cal.innerHTML += text;
+        //     }
+        //   }
+        // }
+      }
+      do {
+        var inputPrice = prompt("ป้อนจำนวนเงิน :");
+        const isValid = /^[0-9]+$/.test(inputPrice);
+        if (!isValid) {
+          alert("กรุณาป้อนตัวเลขเท่านั้น หรือจำนวนเงินต้องไม่ติดลบ");
+          console.log(
+            "ไม่ผ่าน: ต้องเป็นตัวเลขเท่านั้นหรือจำนวนเงินต้องไม่ติดลบ"
+          );
+        } else {
+          console.log("ผ่าน");
+        }
+      } while (isNaN(inputPrice) || inputPrice < 0);
+      inputPrice = parseInt(inputPrice);
+      bankCoin(inputPrice);
+      //   bankCoin(526);
+    </script>
+    <br />
+    <a href="bankCoin.html">คำนวณเงินใหม่</a>
+  </body>
+</html>

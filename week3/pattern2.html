@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pattern2</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+    }
+  </style>
+  <body>
+    <h2>pattern2</h2>
+    
+    <script>
+      function pattern2(rows) {
+        // console.log('1',i, j);
+        document.write(`<p>สร้างรูปแบบตัวเลขจาก 1 ถึง n โดยที่ n คือ ${rows}<br></p>`);
+        for (let i = 1; i <= rows; i++) {
+          for (let j = 1; j <= i; j++) {
+            // console.log(i, j);
+            document.write(i - 1 + j);
+          }
+          document.write("<br>");
+        }
+        // for (let i = rows; i >= 1; i--) {
+        //   for (let j = 1; j <= i; j++) {
+        //     document.write(i - 1 + j);
+        //   }
+        //   document.write("<br>");
+        // }
+      }
+      let numRows = 0;
+      let numRowsInput = 0;
+      do {
+        numRowsInput = prompt(
+          "ป้อนจำนวนแถวที่ต้องการแสดงรูปแบบดาว (เป็นจำนวนเต็มบวก):"
+        );
+        numRows = parseInt(numRowsInput);
+      } while (isNaN(numRows) || numRows <= 0);
+      pattern2(numRows);
+    </script>
+    <br />
+    <a href="pattern2.html">แสดงรูปแบบใหม่</a>
+  </body>
+</html>

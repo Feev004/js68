@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>for</title>
+  </head>
+  <body>
+    <script>
+      document.write("<h2>การแสดงสูตรคูณด้วย for Loop</h2>");
+      let table = parseInt(prompt("กรุณาป้อนแม่สูตรคูณที่ต้องการ (เช่น 5):"));
+      if (!isNaN(table)) {
+        document.write(`<h3>--- สูตรคูณแม่ ${table} ---</h3>`);
+        for (let i = 1; i <= 12; i++) {
+          let result = table * i;
+          document.write(`${table} x ${i} = <b>${result}</b><br>`);
+        }
+      } else {
+        document.write(
+          "<p style='color: red;'>คุณป้อนค่าที่ไม่ถูกต้อง กรุณาลองใหม่</p>"
+        );
+      }
+      document.write("<hr>");
+    </script>
+  </body>
+</html>

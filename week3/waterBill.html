@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>waterBill</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+    }
+  </style>
+  <body>
+    <script>
+      function calculateWaterBill(units) {
+        document.write("<h2>การคำนวณค่าน้ำประปา (ตามหน่วย)</h2><br>");
+        document.write(`ปริมาณการใช้น้ำ : ${units} หน่วย<br>`);
+        let sum = 0;
+
+        if (units <= 0 || isNaN(units)) {
+          document.write("ไม่พบการใช้น้ำหรือค่าที่ป้อนไม่ถูกต้อง<br>");
+        } else if (units <= 10) {
+          let s = units * 10;
+          sum = s;
+        } else if (units <= 20) {
+          let s1 = 10 * 10;
+          let s2 = (units - 10) * 15;
+          sum = s1 + s2;
+        } else {
+          let s1 = 10 * 10;
+          let s2 = 10 * 15;
+          let s3 = (units - 20) * 20;
+          sum = s1 + s2 + s3;
+        }
+
+        document.write(
+          `รวมเป็นเงินทั้งสิ้น : ${sum.toFixed(2)} บาท (ไม่รวมภาษี/ค่าบริการ)<br>`
+        );
+      }
+      let inputWaterUnit = 0;
+      let waterUnit = 0;
+      do {
+        let inputWaterUnit = prompt("ป้อนปริมาณการใช้น้ำ (ลูกบาศก์เมตร):");
+        waterUnit = parseFloat(inputWaterUnit);
+        // console.log(waterUnit);
+      } while (isNaN(inputWaterUnit) || inputWaterUnit < 0);
+      //   console.log(waterUnit, "test");
+      calculateWaterBill(waterUnit);
+      //   calculateWaterBill(100);
+      //   calculateWaterBill(1);
+    </script>
+    <br>
+    <a href="waterBill.html">คำนวณค่าน้ำใหม่</a>
+  </body>
+</html>

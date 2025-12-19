@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tempConverterMenu</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+    }
+  </style>
+  <body>
+    <h2>เมณูแปลงอุณหภูมิ C <-> F</h2>
+    <script>
+      function tempConverterMenu(choice) {
+        if (choice === 3) {
+          choice = "3";
+        } else if (choice === 1) {
+          choice = "1";
+        } else if (choice === 2) {
+          choice = "2";
+        }
+        switch (choice) {
+          case "1":
+            function toFahrenheit(celsius) {
+              return (celsius * 9) / 5 + 32;
+            }
+            let tempCInput = prompt("ป้อนอุณหภูมิในหน่วยเซลเซียส (C):");
+            let tempC = parseFloat(tempCInput);
+            if (!isNaN(tempC)) {
+              let tempF = toFahrenheit(tempC);
+              document.write(
+                `<p>${tempC}°C = <b>${tempF.toFixed(2)}°F</b></p>`
+              );
+              tempConverterMenu();
+            } else {
+              alert("กรุณาป้อนอุณหภูมิเป็นตัวเลขที่ถูกต้อง");
+              // console.log("tempC", tempC);
+              // console.log("tempCInput", tempCInput);
+              tempConverterMenu(choice);
+            }
+            break;
+          case "2":
+            function toCelsius(fahrenheit) {
+              return ((fahrenheit - 32) * 5) / 9;
+            }
+            let tempFInput = prompt("ป้อนอุณหภูมิในหน่วยฟาเรนไฮต์ (F):");
+            let tempF = parseFloat(tempFInput);
+            if (!isNaN(tempF)) {
+              let tempC = toCelsius(tempF);
+              document.write(
+                `<p>${tempF}°F = <b>${tempC.toFixed(2)}°C</b></p>`
+              );
+              tempConverterMenu();
+            } else {
+              alert("กรุณาป้อนอุณหภูมิเป็นตัวเลขที่ถูกต้อง");
+              // console.log("tempFInput", tempFInput);
+              tempConverterMenu(choice);
+            }
+            break;
+          case "3":
+            document.write("<hr>");
+            document.write(`<a href="tempConverterMenu.html">ออกจากโปรแกรมแปลงอุณหภูมิ</a>`);
+            break;
+          default:
+            // alert("ตัวเลือกไม่ถูกต้อง กรุณาลองใหม่");
+            do {
+              var choice = parseInt(
+                prompt("เลือก \n1 แปลง C -> F\n2. แปลง F -> C\n3. = ออก")
+              );
+              // console.log(choice);
+
+              if (choice < 1 || choice > 3 || isNaN(choice)) {
+                alert("โปรดเลือกตัวเลือกให้ถูกต้อง");
+              }
+            } while (choice < 1 || choice > 3 || isNaN(choice));
+            tempConverterMenu(choice);
+            return;
+        }
+      }
+      do {
+        var choice = parseInt(
+          prompt("เลือก \n1 แปลง C -> F\n2. แปลง F -> C\n3. = ออก")
+        );
+        // console.log(choice);
+
+        if (choice < 1 || choice > 3 || isNaN(choice)) {
+          alert("โปรดเลือกตัวเลือกให้ถูกต้อง");
+        }
+      } while (choice < 1 || choice > 3 || isNaN(choice));
+      tempConverterMenu(choice);
+    </script>
+    <!-- <a href="tempConverterMenu.html">ออกจากโปรแกรมแปลงอุณหภูมิ</a> -->
+  </body>
+</html>

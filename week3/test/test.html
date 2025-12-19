@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      document.write("<h2>การแปลงอุณหภูมิ C -> F</h2>");
+      function toFahrenheit(celsius) {
+        return (celsius * 9) / 5 + 32;
+      }
+      let tempCInput = prompt("ป้อนอุณหภูมิในหน่วยเซลเซียส (C):");
+      let tempC = parseFloat(tempCInput);
+      if (!isNaN(tempC)) {
+        let tempF = toFahrenheit(tempC);
+        document.write(
+          `<p>${tempC}°C มีค่าเท่ากับ <b>${tempF.toFixed(2)}°F</b></p>`
+        );
+      } else {
+        document.write(
+          "<p style='color: red;'>กรุณาป้อนอุณหภูมิเป็นตัวเลขที่ถูกต้อง</p>"
+        );
+      }
+      document.write("<hr>");
+    </script>
+  </body>
+</html>

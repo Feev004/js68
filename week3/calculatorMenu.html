@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculatorMenu</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+    }
+  </style>
+  <body>
+    <h2>เมณูเครื่องคิดเลข(+,-,*,/)</h2>
+    <script>
+      function calculatorMenu(choice) {
+        switch (choice) {
+          case "+":
+            let num1 = parseFloat(prompt(`?+? :`));
+            let num2 = parseFloat(prompt(`${num1}+? :`));
+            console.log("num1", num1);
+            console.log("num2", num2);
+            console.log(choice);
+
+            if (!isNaN(num1) && !isNaN(num2)) {
+              let sum = num1 + num2;
+              document.write(`<p>${num1} + ${num2} = ${sum}</p>`);
+              calculatorMenu();
+            } else {
+              alert("กรุณาป้อนตัวเลขที่ถูกต้อง");
+              calculatorMenu(choice);
+            }
+            break;
+          case "-":
+            let num3 = parseFloat(prompt(`?-? :`));
+            let num4 = parseFloat(prompt(`${num3}-? :`));
+            if (!isNaN(num3) && !isNaN(num4)) {
+              let diff = num3 - num4;
+              document.write(`<p>${num3} - ${num4} = ${diff}</p>`);
+              calculatorMenu();
+            } else {
+              alert("กรุณาป้อนตัวเลขที่ถูกต้อง");
+              calculatorMenu(choice);
+            }
+            break;
+          case "*":
+            let num5 = parseFloat(prompt(`?*? :`));
+            let num6 = parseFloat(prompt(`${num5}*? :`));
+            if (!isNaN(num5) && !isNaN(num6)) {
+              let product = num5 * num6;
+              document.write(`<p>${num5} * ${num6} = ${product}</p>`);
+              calculatorMenu();
+            } else {
+              alert("กรุณาป้อนตัวเลขที่ถูกต้อง");
+              calculatorMenu(choice);
+            }
+            break;
+          case "/":
+            let num7 = parseFloat(prompt(`?/? :`));
+            let num8 = parseFloat(prompt(`${num7}/? :`));
+            if (!isNaN(num7) && !isNaN(num8)) {
+              if (num8 !== 0) {
+                let quotient = num7 / num8;
+                document.write(`<p>${num7} / ${num8} = ${quotient}</p>`);
+                calculatorMenu();
+              } else {
+                alert("กรุณาป้อนตัวเลขที่ถูกต้อง");
+                calculatorMenu(choice);
+              }
+            } else {
+              alert("กรุณาป้อนตัวเลขที่ถูกต้อง");
+              calculatorMenu(choice);
+            }
+            break;
+          case "x":
+            document.write(
+              `<a href="calculatorMenu.html">ออกจากเครื่องคิดเลข</a>`
+            );
+            break;
+          default:
+            // alert("ตัวเลือกไม่ถูกต้อง กรุณาลองใหม่");
+            do {
+              var choice = prompt("เลือกการคำนวณ:(+, -, *, / หรือ X เพื่อออก)");
+              console.log(choice);
+            } while (choice === "" || choice >= 0 || choice < 0);
+
+            choice = choice.toLowerCase();
+            calculatorMenu(choice);
+        }
+      }
+
+      do {
+        var choice = prompt("เลือกการคำนวณ:(+, -, *, / หรือ X เพื่อออก)");
+        console.log(choice);
+      } while (choice === "" || choice >= 0 || choice < 0);
+
+      choice = choice.toLowerCase();
+      calculatorMenu(choice);
+    </script>
+  </body>
+</html>
