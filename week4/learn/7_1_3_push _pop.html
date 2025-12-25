@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>push and pop</title>
+  </head>
+  <body>
+    <script>
+      let todoList = ["ซื้อของ", "ทํางานบ้าน"];
+      console.log(`รายการสิ่งที่ต้องทําเริ่มต้น: [${todoList}]`);
+
+      // --- 1. push(): เพิ่มข้อมูลใหม่ ---
+      let newItem = prompt("กรุณาป้อนรายการที่ต้องทําเพิ่ม (push):");
+      if (newItem) {
+        // ตรวจสอบว่าไม่ได้ป้อนค่าว่าง
+        let newLength = todoList.push(newItem);
+        console.log(`[PUSH] เพิ่ม "${newItem}" แล้ว`);
+        console.log(`ความยาวใหม่ของรายการคือ: ${newLength}`);
+      }
+      console.log(`รายการสิ่งที่ต้องทําปัจจุบัน: [${todoList}]`);
+
+      // --- 2. pop(): ลบรายการสุดท้าย ---
+      let confirmPop = prompt("ต้องการลบรายการสุดท้ายหรือไม่? (พิมพ์ y เพื่อยืนยัน)");
+
+      if (confirmPop && confirmPop.toLowerCase() === 'y') {
+      let removedItem = todoList.pop();
+      console.log(`[POP] ลบรายการ "${removedItem}" ออกไปแล้ว`);
+      }
+      console.log(`รายการสิ่งที่ต้องทําสุดท้าย: [${todoList}]`);
+    </script>
+  </body>
+</html>
