@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>บัญชีราคาขาย ต้นทุน และกำไร ของร้านค้า</title>
+  </head>
+  <style>
+    .color_green{
+        color: green;
+    }
+  </style>
+  <body>
+    <h1>บัญชีราคาขาย ต้นทุน และกำไร ของร้านค้า</h1>
+    <table border="1">
+      <tr>
+        <th>รายการที่</th>
+        <th>ราคาขาย</th>
+        <th>ต้นทุน</th>
+        <th>กำไร</th>
+      </tr>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <br>
+    <div id="get1"></div>
+
+    <script>
+      let list = [
+        [500, 350],
+        [1200, 900],
+        [250, 300],
+        [800, 650],
+        [1500, 1100],
+      ];
+
+      function cal(list) {
+        let result = 0;
+        for (let i = 0; i < list.length; i++) {
+          let sum = list[i][0] - list[i][1];
+          let tableBody = document.getElementById("tableBody");
+          tableBody.innerHTML += `
+                <td>${i + 1}</td>
+                <td>${list[i][0]}</td>
+                <td>${list[i][1]}</td>
+                <td class="color_green">${sum}</td>
+                `;
+          console.log(`${list[i][0]} ${list[i][1]} ${sum}`);
+          result += sum;
+        }
+        let get1 = document.getElementById("get1");
+        get1.innerHTML = `ยอดกำไรละลมสุทธิทั้งหมด : <spam class="color_green">${result}<span> บาท`;
+      }
+
+      cal(list);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ระบบจัดการเกรดนักเรียน</title>
+  </head>
+  <style>
+    .text {
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <h1>ระบบจัดการเกรดนักเรียน</h1>
+    <table border="1">
+      <tr>
+        <th>ชื่อนักเรียน</th>
+        <th>คะแนนเก็บ</th>
+        <th>คะแนนสอบ</th>
+        <th>รวม</th>
+        <th>เกรด</th>
+      </tr>
+      <tbody id="tableBody"></tbody>
+      <div id="score"></div>
+    </table>
+    <h3>สรุปผลภาพรวม</h3>
+    <div id="sum_score"></div>
+    <div id="pass"></div>
+
+    <script>
+      let test_score = [
+        ["a", 12, 25],
+        ["b", 20, 31],
+        ["c", 30, 19],
+        ["d", 30, 45],
+        ["d", 40, 45],
+        ["c", 30, 19],
+
+      ];
+      let t_score = [];
+
+      let print_score = "";
+      let sum_score1 = 0;
+      let pass = 0;
+      let score_room = 0;
+      function cal(score) {
+        for (let i = 0; i < score.length; i++) {
+        //   console.log(`${score[i][0]} ${score[i][1]} ${score[i][2]}`);
+          sum_score1 = score[i][1] + score[i][2];
+        //   console.log(sum_score1);
+          if (sum_score1 >= 80) {
+            pass += 1
+            print_score = "A";
+          } else if (sum_score1 >= 70) {
+            pass += 1
+            print_score = "B";
+          } else if (sum_score1 >= 60) {
+            pass += 1
+            print_score = "C";
+          } else if (sum_score1 >= 50) {
+            pass += 1
+            print_score = "D";
+          } else {
+            print_score = "F";
+          }
+          let tableBody = document.getElementById("tableBody");
+          tableBody.innerHTML += `
+                <td>${score[i][0]}</td>
+                <td>${score[i][1]}</td>
+                <td>${score[i][2]}</td>
+                <td class="text">${sum_score1}</td>
+                <td class="text">${print_score}</td>
+                `;
+
+          score_room += sum_score1;
+          let l = score.length;
+          let s = score_room / l;
+        //   console.log(pass);
+        //   console.log(s.toFixed(2));
+          let sum_score_output = document.getElementById("sum_score");
+          sum_score_output.innerHTML = `คะแนนเฉลี่ยของห้อง ${s.toFixed(2)} คะแนน`;
+          let pass_output = document.getElementById("pass");
+          pass_output.innerHTML = `จำนวนนักเรียนที่สอบผ่าน (D ขึ้นไป) : ${pass} จาก ${score.length} คน`;
+        }
+      }
+
+    do {
+      let name_input = prompt("ใส่ชื่อ");
+      let point_input = parseFloat(prompt("ใส่คะแนน"));
+      let exam_point_input = parseFloat(prompt("ใส่คะแนนสอบ"));
+      let sum_in = point_input + exam_point_input
+
+      if (sum_in > 100) {
+        alert(`คะแนนต้องไม่เกิน 100 ที่คุณส่งมามีคะแนนรวม ${sum_in}`);
+        continue;
+      }
+      
+      if (name_input && point_input && exam_point_input) {
+        t_score.push([name_input, parseFloat(point_input), parseFloat(exam_point_input)]);
+      }
+    } while (confirm("ต้องการเพิ่มนักเรียนอีกคนหรือไม่? "));
+
+      cal(t_score);
+    </script>
+  </body>
+</html>
