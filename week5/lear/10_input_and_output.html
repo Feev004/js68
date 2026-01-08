@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>input และ output</title>
+  </head>
+  <body>
+    <h3>เพิ่มข้อมูลนักเรียน (Array of Objects)</h3>
+    <input type="text" id="name" placeholder="ชื่อ" />
+    <input type="text" id="math" placeholder="เกรดคณิต" />
+    <input type="text" id="sci" placeholder="เกรดวิทย์" />
+    <button id="addBtn">เพิ่มข้อมูล</button> <!---สังเกตบรรทัดนี้ กดปุ่ม แต่ไม่เห็นมี onClick--->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ชื่อ</th>
+          <th>คณิต</th>
+          <th>วิทย์</th>
+        </tr>
+      </thead>
+      <tbody id="result"></tbody> <!---สังเกตบรรทัดนี้ เปิดแล้วปิดเลย รอ innerHTML มาแสดงผล--->
+    </table>
+    <script>
+      let studentList = []; 
+      document.getElementById("addBtn").onclick = () => {
+        const n = document.getElementById("name").value;
+        const m = document.getElementById("math").value;
+        const s = document.getElementById("sci").value;
+        const newStudent = {
+          studentName: n,
+          mathGrade: m,
+          sciGrade: s,
+        };
+        studentList.push(newStudent); 
+        const lastStudent = studentList[studentList.length - 1];
+        const newRow = `
+        <tr>
+            <td>${lastStudent.studentName}</td>
+            <td>${lastStudent.mathGrade}</td>
+            <td>${lastStudent.sciGrade}</td>
+        </tr>`;
+        document.getElementById("result").innerHTML += newRow;
+        document.getElementById("name").value = "";
+        document.getElementById("math").value = "";
+        document.getElementById("sci").value = "";
+      };
+    </script>
+  </body>
+</html>
