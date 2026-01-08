@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Entry</title>
+  </head>
+  <body>
+    <input type="text" id="nameInput" placeholder="ชื่อ" />
+    <input type="number" id="ageInput" placeholder="อายุ" />
+    <button onclick="saveUser()">บันทึก</button>
+    <script>
+      function saveUser() {
+        let user = {
+          name: document.getElementById("nameInput").value,
+          age: document.getElementById("ageInput").value,
+        };
+        document.write("บันทึกผู้ใช้: " + user.name + " (" + user.age + " ปี)");
+      }
+    </script>
+  </body>
+</html>

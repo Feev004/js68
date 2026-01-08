@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array of Object of Array</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  <body>
+    <script>
+      let employees = [
+        { name: "John", skills: ["JS", "React"] },
+        { name: "Jane", skills: ["Python", "JS", "SQL"] },
+      ];
+      let searchSkill = prompt("ทักษะที่ต้องการค้นหา (เช่น JS, Python, React, SQL):");
+      for (let i = 0 ; i < employees.length ; i++){
+        for (let j = 0 ; j < employees[i].skills.length ; j++){
+            if (employees[i].skills[j] === searchSkill){
+                document.write(`${i+1}. พนักงานที่มีทักษะ ${searchSkill} คือ ${employees[i].name} <br>`);
+            }
+        }
+      }
+    </script>
+  </body>
+</html>

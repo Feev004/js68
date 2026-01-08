@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Logic</title>
+  </head>
+  <body>
+    <input type="text" id="oldName" placeholder="ชื่อเดิม" />
+    <input type="text" id="newName" placeholder="ชื่อใหม่" />
+    <button onclick="updateName()">แก้ไข</button>
+    <script>
+      let users = [
+        { id: 1, name: "Somchai" },
+        { id: 2, name: "Somsak" },
+      ];
+      for (let i = 0; i < users.length; i++) {
+        document.write("<br>ข้อมูลเริ่มต้น: " + users[i].name);
+      }
+      function updateName() {
+        let target = document.getElementById("oldName").value;
+        let changeTo = document.getElementById("newName").value;
+        for (let i = 0; i < users.length; i++) {
+          if (users[i].name === target) {
+            users[i].name = changeTo;
+            document.write("แก้ไขเรียบร้อยเป็น: " + users[i].name);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

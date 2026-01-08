@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array of Objects & For-Loop</title>
+</head>
+<body>
+    <script>
+        let products = [
+            { name: "Laptop", price: 25000 },
+            { name: "Smartphone", price: 15000 },
+            { name: "Tablet", price: 12000 }
+        ];
+
+        document.write("<h2>Product List</h2>");
+        for (let i = 0 ; i < products.length ; i++){
+            // document.write(i + 1 + "." + products[i].name + " - Price: " + products[i].price + " THB<br>");
+            document.write(`${i + 1}.${products[i].name} - Price: ${products[i].price} THB<br>`);
+        }
+    </script>
+</body>
+</html>

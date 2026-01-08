@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nested Object</title>
+  </head>
+  <body>
+    <script>
+      let employee = {
+        name: "สมชาย",
+        address: { city: "กรุงเทพฯ", zip: "10110" },
+      };
+      document.write("ก่อนแก้ไข <br>");
+      document.write(
+        "พนักงาน: " +
+          employee.name +
+          " อยู่ที่: " +
+          employee.address.city +
+          "<br>"
+      );
+
+      let newCity = prompt("กรุณาแก้ไขจังหวัดที่อยู่:");
+      employee.address.city = newCity;
+      document.write("หลังแก้ไข<br>");
+      document.write(
+        "พนักงาน: " +
+          employee.name +
+          " อยู่ที่: " +
+          employee.address.city +
+          " zip" + employee.address.zip +
+          "<br>"
+      );
+      document.write("บ้านเลขที่: " + employee.address.number);
+    </script>
+  </body>
+</html>

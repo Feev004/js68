@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Keyword</title>
+  </head>
+  <body>
+    <script>
+      let user = { username: "admin", password: "123", email: "test@me.com" };
+      document.write("Username ของคุณคือ: " + user.username + "<br>");
+      document.write("Password ของคุณคือ: " + user.password + "<br>");
+      document.write("Email ของคุณคือ: " + user.email + "<br>");
+      document.write("หลังจากใช้คําสั่ง delete");
+      let confirmDelete = prompt("ต้องการลบ Email หรือไม่? (y/n)");
+      if (confirmDelete === "y") {
+        delete user.email; // สังเกตบรรทัดนี้ ใช้ค าสั่ง delete ระบุ key ที่ต้องการลบ
+        document.write("ข้อมูล Email ถูกลบแล้ว" + "<br>");
+        document.write("Email ของคุณคือ: " + user.email); // พิมพ์ property ที่ถูกลบไปแล้ว ออกมาดู
+      } else {
+        document.write("Email ของคุณคือ: " + user.email);
+      }
+    </script>
+  </body>
+</html>

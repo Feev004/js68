@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array of Objects</title>
+  </head>
+  <body>
+    <button onclick="showStudents()">แสดงตารางนักเรียน</button>
+    <div id="display1"></div>
+    <!---สังเกตบรรทัดนี้ Tag <div> เปิดแล้วปิดเลย มีการตั้ง id ด้วย --->
+    <script>
+      function showStudents() {
+        let students = [
+          { id: "001", name: "สมชาย", score: 85 },
+          { id: "002", name: "สมหญิง", score: 92 },
+          { id: "003", name: "วิชัย", score: 78 },
+        ];
+        let table =
+          "<table border='1'><tr><th>ID</th><th>ชื่อ</th><th>คะแนน</th></tr>";
+        for (let i = 0; i < students.length; i++) {
+          table +=
+            "<tr><td>" +
+            students[i].id +
+            "</td><td>" +
+            students[i].name +
+            "</td><td>" +
+            students[i].score +
+            "</td></tr>";
+        }
+        table += "</table>";
+        document.getElementById("display1").innerHTML = table;
+      }
+    </script>
+  </body>
+</html>

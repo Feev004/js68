@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object of Array</title>
+  </head>
+  <body>
+    <script>
+      let menu = {
+        "Drinks": ["Coffee", "Tea", "Water"], //frist key is string
+        Snacks: ["Cake", "Cookie"], //and second key is not string?
+      };
+      let categories = Object.keys(menu);
+      for (let i = 0 ; i < categories.length ; i++){
+        let cat = categories[i]; // ตัวแปร cat มีค่าเป็น String คือ "Drinks" กับ "Snacks"
+        document.write(`<h3> หมวดหมู่ ${cat}</h3>`);
+
+        for (let j = 0 ; j < menu[cat].length ; j++){
+            document.write(`- ${menu[cat][j]}<br>`);
+        }
+      }
+    </script>
+  </body>
+</html>
