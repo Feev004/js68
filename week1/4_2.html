@@ -7,25 +7,31 @@
   </head>
   <body>
     <h1>hello</h1>
+
     <script>
-      // 1. รับค่าคะแนน
+      // รับคะแนนจากผู้ใช้
       let scoreInput = prompt("กรุณาป้อนคะแนนสอบ (0-100):");
-      let score = parseInt(scoreInput); // q1 แปลงเป็นตัวเลขจํานวนเต็ม
+      let score = parseInt(scoreInput);
       let message;
 
-      // 2. ตรวจสอบความถูกต้องของขอมูล
-      if (isNaN(score) || score < 0 || score > 100) {
+      // ตรวจสอบว่าคะแนนอยู่ในช่วง 0-100
+      if (
+        isNaN(score) /*NaN*/ ||
+        score < 0 /*0.0 -1*/ ||
+        score > 100 /*101...*/
+      ) {
         message = "ข้อมูลไม่ถูกต้อง: กรุณาป้อนตัวเลขในช่วง 0 ถึง 100 เท่านั้น";
       } else {
-        // 3. แปลงคะแนนให้อยู่ในรูปแบบที่ใช้กับ switch ได้:
-        let scoreGroup = 0; // q2
+        // จำแนกคะแนนออกเป็นกลุ่ม
+        let scoreGroup = 0;
         if (score >= 80) {
-          scoreGroup = 10;
+          scoreGroup = 10; // ดีเยี่ยม
         } else if (score < 80 && score >= 50) {
-          scoreGroup = 5;
+          scoreGroup = 5; // ดี
         }
+        // ต่ำกว่า 50 = scoreGroup 0 (ต้องปรับปรุง)
 
-        // 4. ใช้ switch ในการจัดกลุ่มและใช้ break เพื่อออกจาก case ที่ตรงกัน ให้เขียน case เอง
+        // แสดงผลตามกลุ่มคะแนน
         switch (scoreGroup) {
           case 10:
             message = `คะแนน ${score}: **ดีเยี่ยม**`;
@@ -33,8 +39,6 @@
           case 5:
             message = `คะแนน ${score}: **ดี**`;
             break;
-        //   case 0:
-        //     message = `คะแนน ${score}: **ต้องปรับปรุง**`;
 
           default:
             message = `คะแนน ${score}: **ต้องปรับปรุง**`;

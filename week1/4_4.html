@@ -8,45 +8,51 @@
   <body>
     <h1>hello</h1>
     <script>
-        const DISCOUNT_RATE_A = 0.15; // 15% สําหรับยอด 5,000 ขึ้นไป
-      const DISCOUNT_RATE_B = 0.10; // 10% สําหรับยอด 3,000 - 4,999
+      const DISCOUNT_RATE_A = 0.15; // 15% สําหรับยอด 5,000 ขึ้นไป
+      const DISCOUNT_RATE_B = 0.1; // 10% สําหรับยอด 3,000 - 4,999
       const DISCOUNT_RATE_C = 0.05; // 5% สําหรับยอด 1,000 - 2,999
+      
 
-      // 1. รับค่ายอดซื้อรวม
       let totalInput = prompt("กรุณาป้อนยอดซื้อรวมทั้งหมด (บาท):");
-      let totalAmount = parseInt(totalInput);// q1
+      let totalAmount = parseInt(totalInput); // q1
 
       let discountAmount = 0;
       let finalMessage;
 
-      // 2. ตรวจสอบความถูกต้องของข้อมูล
-      if ( totalInput <= 0) { // q2
-      finalMessage = "ข้อมูลไม่ถูกต้อง: กรุณาป้อนตัวเลขยอดซื้อที่เป็นบวก";
-      console.log(finalMessage);
-      
+      if (totalInput <= 0) {
+        // q2
+        finalMessage = "ข้อมูลไม่ถูกต้อง: กรุณาป้อนตัวเลขยอดซื้อที่เป็นบวก";
+        console.log(finalMessage);
       } else {
-      if ( totalAmount >= 5000) { // q3
-      // เงื่อนไขที่ 1: ยอดซื้อ 5,000 บาทขึ้นไป (15%)
-      discountAmount = DISCOUNT_RATE_A// q4
-      finalMessage = `ยอดซื้อ ${totalAmount} บาท ได้รับส่วนลด 15%`;// q5
-      } else if ( totalAmount >= 3000 && totalAmount < 5000) { // q6
-      discountAmount = DISCOUNT_RATE_B// q7
-      finalMessage = `ยอดซื้อ ${ totalAmount} บาท ได้รับส่วนลด 10%`;// q8
-      } else if ( totalAmount >= 1000 && totalAmount < 3000) { // q9
-      discountAmount = DISCOUNT_RATE_C// q10
-      finalMessage = `ยอดซื้อ ${ totalAmount/*q11*/ } บาท ได้รับส่วนลด 5%`;// q11
-      } else {
-      discountAmount = 0;
-      finalMessage = `ยอดซื้อ ${ totalAmount/*q12*/ } บาท ไม่ถึงเกณฑ์รับส่วนลด`;
-      }
+        if (totalAmount >= 5000) {
+          // q3
+          // เงื่อนไขที่ 1: ยอดซื้อ 5,000 บาทขึ้นไป (15%)
+          discountAmount = DISCOUNT_RATE_A; // q4
+          finalMessage = `ยอดซื้อ ${totalAmount} บาท ได้รับส่วนลด 15%`; // q5
+        } else if (totalAmount >= 3000 && totalAmount < 5000) {
+          // q6
+          discountAmount = DISCOUNT_RATE_B; // q7
+          finalMessage = `ยอดซื้อ ${totalAmount} บาท ได้รับส่วนลด 10%`; // q8
+        } else if (totalAmount >= 1000 && totalAmount < 3000) {
+          // q9
+          discountAmount = DISCOUNT_RATE_C; // q10
+          finalMessage = `ยอดซื้อ ${totalAmount /*q11*/} บาท ได้รับส่วนลด 5%`; // q11
+        } else {
+          discountAmount = 0;
+          finalMessage = `ยอดซื้อ ${
+            totalAmount /*q12*/
+          } บาท ไม่ถึงเกณฑ์รับส่วนลด`;
+        }
 
-      // 4. คํานวณยอดที่ต้องชําระจริง
-      let finalPrice = (totalInput * discountAmount)// q13
+        // 4. คํานวณยอดที่ต้องชําระจริง
+        let finalPrice = totalInput * discountAmount; // q13
 
-      console.log("--- ผลลัพธ์ ---");
-      console.log(finalMessage);
-      console.log(`จํานวนส่วนลดที่ได้รับ: ${ finalPrice/*q14*/ } บาท`);
-      console.log(`ยอดที่ต้องชําระจริง: ** ${ totalInput - finalPrice/*q15*/ } บาท**`);
+        console.log("--- ผลลัพธ์ ---");
+        console.log(finalMessage);
+        console.log(`จํานวนส่วนลดที่ได้รับ: ${finalPrice /*q14*/} บาท`);
+        console.log(
+          `ยอดที่ต้องชําระจริง: ** ${totalInput - finalPrice /*q15*/} บาท**`
+        );
       }
     </script>
   </body>

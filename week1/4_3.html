@@ -7,26 +7,46 @@
   </head>
   <body>
     <h1>hello</h1>
+    <!--
+      ฟังก์ชัน: เปรียบเทียบตัวเลขสองตัว
+      
+      คำอธิบาย:
+      - รับค่าตัวเลขสองตัวจากผู้ใช้ผ่าน prompt
+      - แปลงค่า input เป็นตัวเลข (integer) ด้วย parseInt()
+      - ตรวจสอบความถูกต้องของข้อมูล isNaN()
+      - เปรียบเทียบค่าของตัวเลขทั้งสองด้วย ternary operator
+      - แสดงผลการเปรียบเทียบใน console
+      
+      Input:
+      - num1Input (string): ตัวเลขแรกจากผู้ใช้
+      - num2Input (string): ตัวเลขที่สองจากผู้ใช้
+      
+      Output:
+      - result (string): ข้อความแสดงผลการเปรียบเทียบ
+        - "ข้อมูลไม่ถูกต้อง..." หากค่าไม่ใช่ตัวเลข
+        - "num1 มากกว่า num2" หาก num1 > num2
+        - "num1 น้อยกว่า num2" หาก num1 < num2
+        - "num1 เท่ากับ num2" หาก num1 == num2
+      
+      หมายเหตุ:
+      - q1: ควรใช้ isNaN(num1) และ isNaN(num2) แทน isNaN(num1Input)
+            เพื่อให้การตรวจสอบถูกต้องหลังจาก parseInt()
+    -->
     <script>
-        // 1. รับค่าตัวเลขสองตัว
       let num1Input = prompt("กรุณาป้อนตัวเลขแรก (Number 1):");
       let num2Input = prompt("กรุณาป้อนตัวเลขที่สอง (Number 2):");
 
       let num1 = parseInt(num1Input);
       let num2 = parseInt(num2Input);
-    //   let checknum = isNaN(num1) || isNaN(num2);
-
       let result;
 
-      // 2. ตรวจสอบความถูกต้องของข้อมูล
       if ( isNaN(num1Input) || isNaN(num2Input)) { // q1
       result = "ข้อมูลไม่ถูกต้อง: กรุณาป้อนเป็นตัวเลขเท่านั้น";
       } else {
-      // 3. ใช้ Ternary Operator ในการกําหนดค่าตัวแปร result
-      result = num1 > num2 ? `${num1} **มากกว่า** ${num2}` // q2 ถ้า num1 > num2
-      : num1 < num2// q3 แทนที่จะเป็น String กลับเป็นเงื่อนไขเปรียบเทียบต่อ
-      ? `${num1} **น้อยกว่า** ${num2}` // ถ้า num1 < num2
-      : num1 == num2 ? `${num1} **เท่ากับ** ${num2}` : result = `ค่าไม่ถูกต้อง`// q4 ถ้า num1 == num2
+      result = num1 > num2 ? `${num1} **มากกว่า** ${num2}`
+      : num1 < num2 ? `${num1} **น้อยกว่า** ${num2}` 
+      : num1 == num2 ? `${num1} **เท่ากับ** ${num2}` 
+      : result = `ค่าไม่ถูกต้อง`
       }
 
       console.log(`ผลการเปรียบเทียบ: ${result}`);

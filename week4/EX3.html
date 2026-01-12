@@ -51,14 +51,22 @@
       function ff(employee) {
         let best = employee[0];
         for (let i = 0; i < employee.length; i++) {
-          console.log(employee[i][0], employee[i][1]);
+          let test = 0;
+          // test += employee[i][1];
+          // console.log(employee.length);
+          
+          // console.log(`tset = ${test}`);
+          
+          // console.log(employee[i][0], employee[i][1]);
           employee_html.innerHTML += `◦ ${employee[i][0]} : ${employee[i][1]} บาท<br>`;
+          
           if (employee[i][1] > best[1]) best = employee[i];
         }
 
         let get1 = document.getElementById("get1");
         get1.innerHTML = `พนักงานดีเด่นประจำเดือน : <span class="text">${best[0]}</span>`;
         console.log(`พนักงานดีเด่นประจำเดือน : ${best[0]}`);
+        // console.log('พนักงานดีเด่นประจำเดือน : ${best[0]}', best[0], "" + 5);
         let get2 = document.getElementById("get2");
         get2.innerHTML = `ยอดขายสูงสุด : <span class="text">${best[1]}</span>`;
         console.log(`ยอดขายสูงสุด : ${best[1]}`);
