@@ -7,7 +7,9 @@
   </head>
   <body>
     <script>
-      const convertTemp = (value, unit) => {
+      function convertTemp(value, unit) {
+        // console.log(value,unit);
+        
         if (unit === "C") {
           return (value * 9) / 5 + 32;
         } else if (unit === "F") {

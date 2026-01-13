@@ -11,10 +11,10 @@
       let table = parseInt(prompt("กรุณาป้อนแม่สูตรคูณที่ต้องการ (เช่น 5):"));
       if (!isNaN(table)) {
         document.write(`<h3>--- สูตรคูณแม่ ${table} ---</h3>`);
-        for (let i = 1; i <= 12; i++) {
+        for (let i = 1/*2*/; i <= 12; i++) {// ถ้า i = 13 จะหยุด
           let result = table * i;
           document.write(`${table} x ${i} = <b>${result}</b><br>`);
-        }
+        }// ให้วนกลับไปที่บรรทัดที่ 14 จนกว่าจะครบเงื่อนไข
       } else {
         document.write(
           "<p style='color: red;'>คุณป้อนค่าที่ไม่ถูกต้อง กรุณาลองใหม่</p>"
