@@ -14,9 +14,9 @@
     <h1>นับยอดเหรียญในตู้ขายสินค้าหยอดเหรียญ</h1>
     <h2>นับเฉพราะในแต่ละตู้</h2>
     <hr>
-    <div id="get1"></div>
+    <div id="get1">test</div>
     <div id="get2"></div>
-    <div id="result"></div>
+    <!-- <div id="result"></div> -->
 
     <script>
       function cal(cupboard) {
@@ -32,7 +32,7 @@
           }
         }
         // console.log(`ตู้ที่ ${time + 1} : มีเหรียญ 10 : ${coin_10}`);
-        let get1 = document.getElementById("get1")
+        let get1 = document.getElementById("get1");
         console.log(`พบเหรียญ 10 ทั้งหมด : ${coin_10} เหรียญ`);
         get1.innerHTML = `พบเหรียญ 10 ทั้งหมด : ${coin_10} เหรียญ`;
         let get2 = document.getElementById("get2");

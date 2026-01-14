@@ -6,14 +6,14 @@
     <title>สรุปผลสอบวิชาคอมพิวเตอร์</title>
   </head>
   <style>
-    body{
-        font-family:Arial, Helvetica, sans-serif;
+    body {
+      font-family: Arial, Helvetica, sans-serif;
     }
-    .color_red{
-        color: red;
+    .color_red {
+      color: red;
     }
-    .color_green{
-        color: green;
+    .color_green {
+      color: green;
     }
   </style>
   <body>
@@ -23,18 +23,22 @@
     <script>
       function cal(students) {
         let result = "";
-        let id = document.getElementById("score")
+        let id = document.getElementById("score");
         for (let i = 0; i < students.length; i++) {
           total_score = students[i][1] + students[i][2];
-        //   console.log(total_score);
+          //   console.log(total_score);
           if (total_score < 50) {
             result = "ไม่ผ่าน";
-            console.log(`นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : ${result}`);
-            id.innerHTML += `นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : <span class="color_red">${result}</span><br>`
-          } else{
+            console.log(
+              `นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : ${result}`
+            );
+            id.innerHTML += `นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : <span class="color_red">${result}</span><br>`;
+          } else {
             result = "ผ่าน";
-            console.log(`นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : ${result}`);
-            id.innerHTML += `นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : <span class="color_green">${result}</span><br>`
+            console.log(
+              `นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : ${result}`
+            );
+            id.innerHTML += `นักเรียน : ${students[i][0]} | คะแนนรวม : ${total_score} | ผลการเรียน : <span class="color_green">${result}</span><br>`;
           }
         }
       }
