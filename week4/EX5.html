@@ -35,7 +35,6 @@
         ["d", 30, 45],
         ["d", 40, 45],
         ["c", 30, 19],
-
       ];
       let t_score = [];
 
@@ -45,20 +44,20 @@
       let score_room = 0;
       function cal(score) {
         for (let i = 0; i < score.length; i++) {
-        //   console.log(`${score[i][0]} ${score[i][1]} ${score[i][2]}`);
+          //   console.log(`${score[i][0]} ${score[i][1]} ${score[i][2]}`);
           sum_score1 = score[i][1] + score[i][2];
-        //   console.log(sum_score1);
+          //   console.log(sum_score1);
           if (sum_score1 >= 80) {
-            pass += 1
+            pass += 1;
             print_score = "A";
           } else if (sum_score1 >= 70) {
-            pass += 1
+            pass += 1;
             print_score = "B";
           } else if (sum_score1 >= 60) {
-            pass += 1
+            pass += 1;
             print_score = "C";
           } else if (sum_score1 >= 50) {
-            pass += 1
+            pass += 1;
             print_score = "D";
           } else {
             print_score = "F";
@@ -75,31 +74,38 @@
           score_room += sum_score1;
           let l = score.length;
           let s = score_room / l;
-        //   console.log(pass);
-        //   console.log(s.toFixed(2));
+          //   console.log(pass);
+          //   console.log(s.toFixed(2));
           let sum_score_output = document.getElementById("sum_score");
-          sum_score_output.innerHTML = `คะแนนเฉลี่ยของห้อง ${s.toFixed(2)} คะแนน`;
+          sum_score_output.innerHTML = `คะแนนเฉลี่ยของห้อง ${s.toFixed(
+            2
+          )} คะแนน`;
           let pass_output = document.getElementById("pass");
           pass_output.innerHTML = `จำนวนนักเรียนที่สอบผ่าน (D ขึ้นไป) : ${pass} จาก ${score.length} คน`;
         }
       }
 
-    do {
-      let name_input = prompt("ใส่ชื่อ");
-      let point_input = parseFloat(prompt("ใส่คะแนน"));
-      let exam_point_input = parseFloat(prompt("ใส่คะแนนสอบ"));
-      let sum_in = point_input + exam_point_input
+      do {
+        let name_input = prompt("ใส่ชื่อ");
+        let point_input = parseFloat(prompt("ใส่คะแนน"));
+        let exam_point_input = parseFloat(prompt("ใส่คะแนนสอบ"));
+        let sum_in = point_input + exam_point_input;
 
-      if (sum_in > 100) {
-        alert(`คะแนนต้องไม่เกิน 100 ที่คุณส่งมามีคะแนนรวม ${sum_in}`);
-        continue;
-      }
-      
-      if (name_input && point_input && exam_point_input) {
-        t_score.push([name_input, parseFloat(point_input), parseFloat(exam_point_input)]);
-      }
-    } while (confirm("ต้องการเพิ่มนักเรียนอีกคนหรือไม่? "));
+        if (sum_in > 100) {
+          alert(`คะแนนต้องไม่เกิน 100 ที่คุณส่งมามีคะแนนรวม ${sum_in}`);
+          continue;
+        }
 
+        if (name_input && point_input && exam_point_input) {
+          t_score.push([
+            name_input,
+            parseFloat(point_input),
+            parseFloat(exam_point_input),
+          ]);
+        }
+      } while (confirm("ต้องการเพิ่มนักเรียนอีกคนหรือไม่? "));
+
+      // cal(test_score)
       cal(t_score);
     </script>
   </body>
