@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ระบบตรวจจับสุขภาพพนักงาน</title>
+  </head>
+  <body>
+    <h2>ระบบจัดการผลตรวจสุขภาพพนักงาน</h2>
+    <h3>ค้นหาผลการตรวจ</h3>
+    ระบุสถานะที่ต้องการค้นหา:
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="พิมพ์คำว่า: ผิดปกติ, ปกติ"
+    />
+    <!-- <select id="type" class="form-select">
+      <option value="normal">ปกติ</option>
+      <option value="abnormal">ผิดปกติ</option>
+    </select> -->
+    <button onclick="search()">ค้นหา</button>
+    <button onclick="select_all()">แสดงทั้งหมด</button>
+    <table border="1">
+      <tr>
+        <th>ชื่อพนักงาน</th>
+        <th>รายการตรวจและผลลัพธ์</th>
+      </tr>
+      <tbody id="displayArea"></tbody>
+    </table>
+    <!-- <div id="displayArea"></div> -->
+    <script>
+      let filteredResults = [
+        {
+          name: "วิชัย",
+          Disease_status: [
+            "ระดับน้ำตาล",
+            "ความดันโลหิต",
+            "ค่าตับ",
+            "หัวใจ",
+            // "ปัสสาวะ",
+          ],
+          satatus: ["ปกติ", "ผิดปกติ", "ปกติ", "ผิดปกติ"],
+        },
+        {
+          name: "มาณี",
+          Disease_status: [
+            "ระดับน้ำตาล",
+            "ความดันโลหิต",
+            // "ค่าตับ",
+            // "หัวใจ",
+            // "ปัสสาวะ",
+          ],
+          satatus: ["ปกติ", "ปกติ"],
+        },
+        {
+          name: "สมศักดิ์",
+          Disease_status: [
+            "ระดับน้ำตาล",
+            "ความดันโลหิต",
+            // "ค่าตับ",
+            // "หัวใจ",
+            "ปัสสาวะ",
+          ],
+          satatus: ["ผิดปกติ", "ผิดปกติ", "ผิดปกติ"],
+        },
+      ];
+      select_all();
+      function select_all() {
+        let displayArea = document.getElementById("displayArea");
+        displayArea.innerHTML = "";
+        for (let i = 0; i < filteredResults.length; i++) {
+          let statusList = "";
+          for (let j = 0; j < filteredResults[i].Disease_status.length; j++) {
+            statusList += `<li>${filteredResults[i].Disease_status[j]}: ${filteredResults[i].satatus[j]}</li>`;
+          }
+          displayArea.innerHTML += `
+                <tr>
+                    <td>${filteredResults[i].name}</td>
+                    <td><ul>${statusList}</ul></td>
+                </tr>
+            `;
+        }
+      }
+      function search() {
+        let input = document.getElementById("searchInput").value;
+        let displayArea = document.getElementById("displayArea");
+        displayArea.innerHTML = "";
+        for (let i = 0; i < filteredResults.length; i++) {
+          if (filteredResults[i].satatus.includes(input)) {
+            let statusList = "";
+            for (let j = 0; j < filteredResults[i].Disease_status.length; j++) {
+              statusList += `<li>${filteredResults[i].Disease_status[j]}: ${filteredResults[i].satatus[j]}</li>`;
+            }
+            displayArea.innerHTML += `
+                    <tr>
+                        <td>${filteredResults[i].name}</td>
+                        <td><ul>${statusList}</ul></td>
+                    </tr>
+                `;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
