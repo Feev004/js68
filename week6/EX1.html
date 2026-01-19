@@ -91,9 +91,10 @@
         <script>
             // let transactions = [];
             let transactions = [
-                {description: 'food', amount: 50, type: 'income', date: '1/15/2026'},
+                {description: 'ตังพ่อ', amount: 5000, type: 'income', date: '1/15/2026'},
                 {description: 'food', amount: 50, type: 'income', date: '1/15/2026'},
                 {description: 'food', amount: 50, type: 'expense', date: '1/15/2026'}
+                // {description: 'ค่าเช่าห้อง', amount: 2000, type: 'expense', date: '1/16/2026'}
             ];
             function addTransaction() {
                 let desc = document.getElementById("food").value;
@@ -106,10 +107,10 @@
                     type: typ,
                     date: new Date().toLocaleDateString(),
                 };
-                transactions.push(newItem);
+                transactions.push(newItem); // เพิ่มรายการใหม่ลงในอาเรย์ transactions
                 renderSummary();
-                document.getElementById("food").value = '';
-                document.getElementById("amount").value = '';
+                // document.getElementById("food").value = '';
+                // document.getElementById("amount").value = '';
             }
             function renderSummary() {
                 let table = `
@@ -151,7 +152,8 @@
                 console.log(transactions);
                 
             }
-            window.addEventListener("load", renderSummary);
+            // window.addEventListener("load", renderSummary);
+            renderSummary(transactions);
         </script>
     </body>
 </html>

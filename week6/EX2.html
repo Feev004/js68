@@ -63,6 +63,17 @@
           ],
           satatus: ["ผิดปกติ", "ผิดปกติ", "ผิดปกติ"],
         },
+        {
+          name: "มาณี",
+          Disease_status: [
+            "ระดับน้ำตาล",
+            "ความดันโลหิต",
+            // "ค่าตับ",
+            // "หัวใจ",
+            // "ปัสสาวะ",
+          ],
+          satatus: ["ปกติ", "ปกติ"],
+        },
       ];
       select_all();
       function select_all() {
@@ -72,20 +83,23 @@
           let statusList = "";
           for (let j = 0; j < filteredResults[i].Disease_status.length; j++) {
             statusList += `<li>${filteredResults[i].Disease_status[j]}: ${filteredResults[i].satatus[j]}</li>`;
+            // statusList += `<p>${filteredResults[i].Disease_status[j]}: ${filteredResults[i].satatus[j]}</p>`;
           }
           displayArea.innerHTML += `
                 <tr>
                     <td>${filteredResults[i].name}</td>
                     <td><ul>${statusList}</ul></td>
+                    <!-- <td><ol>${statusList}</ol></td> -->
                 </tr>
             `;
         }
       }
       function search() {
-        let input = document.getElementById("searchInput").value;
-        let displayArea = document.getElementById("displayArea");
+        let input = document.getElementById("searchInput").value; // รับค่าจาก input
+        let displayArea = document.getElementById("displayArea"); // เลือกพื้นที่แสดงผล
         displayArea.innerHTML = "";
         for (let i = 0; i < filteredResults.length; i++) {
+          // if (filteredResults[i].satatus === input) {
           if (filteredResults[i].satatus.includes(input)) {
             let statusList = "";
             for (let j = 0; j < filteredResults[i].Disease_status.length; j++) {
@@ -100,6 +114,7 @@
           }
         }
       }
+      // select_all();
     </script>
   </body>
 </html>

@@ -1,46 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <title>ค้นหาพนักงานขายดีเด่น</title>
+    <style>
+      .text {
+        font-weight: bold;
+      }
+      body {
+        padding: 20px;
+      }
+    </style>
   </head>
-  <style>
-    .text {
-      font-weight: bold;
-    }
-  </style>
   <body>
-    <h1>ค้นหาพนักงานขายดีเด่นประจำเดือน</h1>
-    <h3>รายการยอดขายพนักงาน :</h3>
-    <div id="employee"></div>
-    <hr />
-    <h3>ใส่ข้อมูลพนักงาน :</h3>
-    <input type="text" id="nameInput" placeholder="ชื่อพนักงาน" />
-    <input type="number" id="salesInput" placeholder="ยอดขาย" />
-    <!-- <input type="date"  placeholder="วันที่" /> -->
-    <button onclick="addEmployee()" class="btn btn-primary">เพิ่มพนักงาน</button>
-    <hr />
-    <h3>ผลลัพธ์พนักงานดีเด่น</h3>
-    <div id="get1"></div>
-    <div id="get2"></div>
+    <div class="container">
+      <h1 class="mb-4">ค้นหาพนักงานขายดีเด่นประจำเดือน</h1>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3 class="mb-0">รายการยอดขายพนักงาน :</h3>
+        </div>
+        <div class="card-body">
+          <div id="employee"></div>
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3 class="mb-0">ใส่ข้อมูลพนักงาน :</h3>
+        </div>
+        <div class="card-body">
+          <div class="input-group gap-2">
+            <input
+              type="text"
+              id="nameInput"
+              class="form-control"
+              placeholder="ชื่อพนักงาน"
+            />
+            <input
+              type="number"
+              id="salesInput"
+              class="form-control"
+              placeholder="ยอดขาย"
+            />
+            <button onclick="addEmployee()" class="btn btn-primary">
+              เพิ่มพนักงาน
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">ผลลัพธ์พนักงานดีเด่น</h3>
+        </div>
+        <div class="card-body">
+          <div id="get1" class="mb-2"></div>
+          <div id="get2"></div>
+        </div>
+      </div>
+    </div>
 
     <script>
-      addEmployee();
-      function addEmployee() {
-        let name = document.getElementById("nameInput").value;
-        let sales = document.getElementById("salesInput").value;
-
-        if (name && sales) {
-          employee.push([name, parseInt(sales)]);
-          document.getElementById("nameInput").value = "";
-          document.getElementById("salesInput").value = "";
-          document.getElementById("employee").innerHTML = "";
-          ff(employee);
-        }
-      }
-
       let employee_html = document.getElementById("employee");
       let employee = [
         ["สมชาย", 45000],
@@ -49,33 +75,34 @@
         ["จินดา", 85000],
         ["เกษม", 69000],
       ];
-      //   employee_html.innerHTML = employee;
+
       function ff(employee) {
         let best = employee[0];
+        employee_html.innerHTML = "";
+
         for (let i = 0; i < employee.length; i++) {
-          let test = 0;
-          // test += employee[i][1];
-          // console.log(employee.length);
-          
-          // console.log(`tset = ${test}`);
-          
-          // console.log(employee[i][0], employee[i][1]);
           employee_html.innerHTML += `◦ ${employee[i][0]} : ${employee[i][1]} บาท<br>`;
-          
           if (employee[i][1] > best[1]) best = employee[i];
         }
 
-        let get1 = document.getElementById("get1");
-        get1.innerHTML = `พนักงานดีเด่นประจำเดือน : <span class="text">${best[0]}</span>`;
-        console.log(`พนักงานดีเด่นประจำเดือน : ${best[0]}`);
-        // console.log('พนักงานดีเด่นประจำเดือน : ${best[0]}', best[0], "" + 5);
-        let get2 = document.getElementById("get2");
-        get2.innerHTML = `ยอดขายสูงสุด : <span class="text">${best[1]}</span>`;
-        console.log(`ยอดขายสูงสุด : ${best[1]}`);
-
-        console.log(best[0], best[1]);
+        document.getElementById("get1").innerHTML =
+          `พนักงานดีเด่นประจำเดือน : <span class="text">${best[0]}</span>`;
+        document.getElementById("get2").innerHTML =
+          `ยอดขายสูงสุด : <span class="text">${best[1]}</span>`;
       }
-      // let name = [สมชาย, วิภา, มานะ, จินดา, เกษม]
+
+      function addEmployee() {
+        let name = document.getElementById("nameInput").value;
+        let sales = document.getElementById("salesInput").value;
+
+        if (name && sales) {
+          employee.push([name, parseInt(sales)]);
+          document.getElementById("nameInput").value = "";
+          document.getElementById("salesInput").value = "";
+          ff(employee);
+        }
+      }
+
       ff(employee);
     </script>
   </body>
