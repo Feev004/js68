@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ระบบเช็คเกรด</title>
+  </head>
+  <style></style>
+  <body>
+    <h1>ระบบเช็คเกรด</h1>
+    <input type="text" id="inputname" placeholder="ชื่อนักเรียน" />
+    <input type="number" id="inputscore" placeholder="คะแนน" />
+    <select id="test" onchange="select(/*pass*/)">
+      <option value="no"></option>
+      <option value="pass">ผ่าน</option><!---ส่งค่าไปที่ select--->
+      <option value="fail">ไม่ผ่าน</option>
+    </select>
+    <button onclick="showData()">เพิ่มข้อมูล</button>
+    <!-- <button id="showall">แสดงข้อมูลทั้งหมด</button> -->
+    <table border="1">
+      <tr>
+        <th>ชื่อ</th>
+        <th>คะแนน(เกรด)</th>
+        <th>เกณฑ์การตัดเกรด</th>
+      </tr>
+      <tbody id="show"></tbody>
+    </table>
+    <script>
+      let test = [
+        { name: "สมชาย", score: 85 },
+        { name: "สมศรี", score: 75 },
+        { name: "สมปอง", score: 65 },
+        { name: "สมหมาย", score: 55 },
+        { name: "สมหญิง", score: 45 },
+        { name: "สมฤดี", score: 35 },
+      ];
+      let inner = document.getElementById("show");
+      for (let i = 0; i < test.length; i++) {
+        // let inner = document.getElementById("show");
+        let grade = calGrade(test[i].score);
+        let pf = calPF(test[i].score);
+        inner.innerHTML += `
+            <tr>
+                <td>${test[i].name}</td>
+                <td>${test[i].score} (${grade})</td>
+                <td>${pf}</td>
+            </tr>
+            `;
+      }
+      function showData() {
+        if (document.getElementById("inputname").value == "" || document.getElementById("inputscore").value == "") {
+          alert("กรุณาใส่ข้อมูลให้ครบ");
+          return;
+        }else{
+          let name = document.getElementById("inputname").value;
+          let score = parseFloat(document.getElementById("inputscore").value);
+          let grade = calGrade(score);
+          let pf = calPF(score);
+          test.push({ name: name, score: score });
+          inner.innerHTML += `
+              <tr>
+                  <td>${name}</td>
+                  <td>${score} (${grade})</td>
+                  <td>${pf}</td>
+              </tr>
+              `;
+        }
+      }
+
+      function calGrade(score) {
+        let grade = "";
+        if (score >= 80) {
+          grade = "A";
+        } else if (score >= 70) {
+          grade = "B";
+        } else if (score >= 60) {
+          grade = "C";
+        } else if (score >= 50) {
+          grade = "D";
+        } else {
+          grade = "F";
+        }
+        return grade;
+      }
+
+      function calPF(score) {
+        let pf = "";
+        if (score >= 50) {
+          pf = "ผ่าน";
+        } else {
+          pf = "ไม่ผ่าน";
+        }
+        return pf;
+      }
+    function select(){
+    //   let criteria = document.querySelector("select").value;
+    //   let criteria = document.querySelector("#test").value;
+      let criteria = document.getElementById("test").value;
+      inner.innerHTML = "";
+      
+      if (criteria === "no") {
+        // Show all data
+        for (let i = 0; i < test.length; i++) {
+        inner.innerHTML += `
+            <tr>
+              <td>${test[i].name}</td>
+              <td>${test[i].score} (${calGrade(test[i].score)})</td>
+              <td>${calPF(test[i].score)}</td>
+            </tr>
+            `;
+        }
+      } else if (criteria === "pass") {
+        // Show only passing students
+        for (let i = 0; i < test.length; i++) {
+        if (test[i].score >= 50) {
+          inner.innerHTML += `
+            <tr>
+                <td>${test[i].name}</td>
+                <td>${test[i].score} (${calGrade(test[i].score)})</td>
+                <td>ผ่าน</td>
+            </tr>
+            `;
+        }
+        }
+      } else if (criteria === "fail") {
+        // Show only failing students
+        for (let i = 0; i < test.length; i++) {
+        if (test[i].score < 50) {
+          inner.innerHTML += `
+            <tr>
+                <td>${test[i].name}</td>
+                <td>${test[i].score} (${calGrade(test[i].score)})</td>
+                <td>ไม่ผ่าน</td>
+            </tr>
+            `;
+        }
+        }
+      }
+    }
+    </script>
+  </body>
+</html>
